@@ -175,7 +175,7 @@ app.route('/api/products')
     })
   })
   .post(function(req, res) {
-    var product = Product.build(_.pick(req.body, ['name', 'address', 'phone']));
+    var product = Product.build(_.pick(req.body, ['name', 'price'])); // ERROR HERE
     product.save().then(function(product){
       res.json(product);
     });
@@ -189,7 +189,7 @@ app.route('/api/products/:product_id')
   }) 
   .put(function(req, res) {
     Product.findById(req.params.product_id).then(function(product) {
-      product.update(_.pick(req.body, ['name', 'address', 'phone'])).then(function(product) {
+      product.update(_.pick(req.body, ['name', 'price'])).then(function(product) { // ERROR HERE
         res.json(product);
       });
     });
@@ -263,14 +263,15 @@ app.route('/api/invoices/:invoice_id/items/:id')
     });
   }) 
   .put(function(req, res) {
-    InvoiceItem.findById(req.params.invoice_id).then(function(invoice_item) {
+    // InvoiceItem.findById(req.params.invoice_id).then(function(invoice_item) { // WTF IS THAT???? It was here before my changes.
+    InvoiceItem.findById(req.params.id).then(function(invoice_item) {
       invoice_item.update(_.pick(req.body, ['product_id', 'quantity'])).then(function(invoice_item) {
         res.json(invoice_item);
       });
     });
   })
   .delete(function(req, res) {
-    InvoiceItem.findById(req.params.invoice_id).then(function(invoice_item) {
+    InvoiceItem.findById(req.params.id).then(function(invoice_item) { // THE SAME FIXED HERE
       invoice_item.destroy().then(function(invoice_item) {
         res.json(invoice_item);
       });
