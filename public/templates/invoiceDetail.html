@@ -1,0 +1,33 @@
+<div ng-if="$ctrl.invoice">
+  <h3>{{$ctrl.invoice.id}}</h3>
+  <div>
+    <label>Customer: </label>
+    <select ng-model="$ctrl.invoice.customer_id" ng-change="$ctrl.save()">
+      <option ng-repeat="customer in $ctrl.customers" value="{{customer.id}}">{{customer.name}}</option>
+    </select>
+  </div>
+  <a href="#"  ng-click="$ctrl.newCustomer()">Create new customer</a>
+  <div>
+    <h4>Products: </h4>
+    <div ng-repeat="item in $ctrl.items">
+      <select ng-model="item.product_id" ng-change="$ctrl.saveItem(item)">
+        <option ng-repeat="product in $ctrl.products" value="{{product.id}}">{{product.name}}</option>
+      </select>
+      <input type="number" ng-model="item.quantity" min="1" step="1" ng-change="$ctrl.saveItem(item)"/>
+      <a href="#" ng-click="$ctrl.deleteItem(item)">(delete)</a>
+    </div>
+    <button ng-click="$ctrl.addItem()">Add product</button>
+    <div>
+      <a href="#" ng-click="$ctrl.newProduct()">Create new product</a>
+    </div>
+  </div>
+  <div>
+    <label>Discount: </label>
+    <input ng-model="$ctrl.invoice.discount" type="number" step="any" ng-change="$ctrl.save()"/>
+  </div>
+  <div>
+    <label>Total: </label>
+    <input ng-model="$ctrl.invoice.total" readonly/>
+  </div>
+  <button ng-click="$ctrl.gotoInvoices()">Back</button>
+</div>

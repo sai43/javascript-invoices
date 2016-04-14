@@ -1,0 +1,4 @@
+<div ng-repeat="customer in $ctrl.customers">
+  <a ng-link="['CustomerDetail', {id: customer.id}]">{{customer.name}}</a>
+</div>
+<button ng-click="$ctrl.newCustomer()">New customer</button>

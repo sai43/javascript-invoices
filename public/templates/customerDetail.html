@@ -1,0 +1,18 @@
+<div ng-if="$ctrl.customer">
+  <h3>{{$ctrl.customer.name}}</h3>
+  <div>
+    <label>Id: </label>{{$ctrl.customer.id}}</div>
+  <div>
+    <label>Name: </label>
+    <input ng-model="$ctrl.customer.name" ng-change="$ctrl.save()"/>
+  </div>
+  <div>
+    <label>Address: </label>
+    <input ng-model="$ctrl.customer.address" ng-change="$ctrl.save()"/>
+  </div>
+  <div>
+    <label>Phone: </label>
+    <input ng-model="$ctrl.customer.phone" ng-change="$ctrl.save()"/>
+  </div>
+  <button ng-click="$ctrl.gotoCustomers()">Back</button>
+</div>

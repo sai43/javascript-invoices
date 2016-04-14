@@ -1,0 +1,14 @@
+<div ng-if="$ctrl.product">
+  <h3>{{$ctrl.product.name}}</h3>
+  <div>
+    <label>Id: </label>{{$ctrl.product.id}}</div>
+  <div>
+    <label>Name: </label>
+    <input ng-model="$ctrl.product.name" ng-change="$ctrl.save()"/>
+  </div>
+  <div>
+    <label>Price: </label>
+    <input ng-model="$ctrl.product.price" type="number" step="any" ng-change="$ctrl.save()"/>
+  </div>
+  <button ng-click="$ctrl.gotoProducts()">Back</button>
+</div>

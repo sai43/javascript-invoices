@@ -1,0 +1,4 @@
+<div ng-repeat="product in $ctrl.products">
+  <a ng-link="['ProductDetail', {id: product.id}]">{{product.name}}</a>
+</div>
+<button ng-click="$ctrl.newProduct()">New product</button>

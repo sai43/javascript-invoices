@@ -1,0 +1,4 @@
+<div ng-repeat="invoice in $ctrl.invoices"><!--  ng-class="{ selected: $ctrl.isSelected(hero) }" -->
+  <a ng-link="['InvoiceDetail', {id: invoice.id}]">{{invoice.id}}</a>
+</div>
+<button ng-click="$ctrl.newInvoice()">New invoice</button>
